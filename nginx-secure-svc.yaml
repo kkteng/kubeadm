@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx
+  labels:
+    run: my-nginx
+spec:
+  type: LoadBalancer
+  externalIPs:
+  - 18.138.194.121
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 32000
+    protocol: TCP
+    name: http
+  selector:
+    run: my-nginx
