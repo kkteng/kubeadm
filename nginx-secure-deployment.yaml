@@ -6,12 +6,21 @@ spec:
   selector:
     matchLabels:
       run: my-nginx
-  replicas: 4
+  replicas: 3
   template:
     metadata:
       labels:
         run: my-nginx
     spec:
+      tolerations:
+      - key: "node.kubernetes.io/unreachable"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 30
+      - key: "node.kubernetes.io/not-ready"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 30
       containers:
       - name: nginxhttps
         image: nginx
