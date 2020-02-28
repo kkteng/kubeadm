@@ -17,3 +17,7 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "sed -i \"s/Welcome to nginx/Welcome to nginx $(hostname)/\" /usr/share/nginx/html/index.html"]

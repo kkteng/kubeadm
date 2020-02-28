@@ -6,6 +6,7 @@ metadata:
     run: my-nginx
 spec:
   type: LoadBalancer
+#  type: NodePort
   externalIPs:
   - 18.138.194.121
   ports:
